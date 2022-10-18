@@ -16,9 +16,10 @@ module ShopifyAPI
             shop: String,
             redirect_path: String,
             is_online: T.nilable(T::Boolean),
+            scope: ShopifyAPI::Auth::AuthScopes,
           ).returns(T::Hash[Symbol, T.any(String, SessionCookie)])
         end
-        def begin_auth(shop:, redirect_path:, is_online: true)
+        def begin_auth(shop:, redirect_path:, is_online: true, scope: ShopifyAPI::Context.scope)
           unless Context.setup?
             raise Errors::ContextNotSetupError, "ShopifyAPI::Context not setup, please call ShopifyAPI::Context.setup"
           end
@@ -30,7 +31,7 @@ module ShopifyAPI
 
           query = {
             client_id: ShopifyAPI::Context.api_key,
-            scope: ShopifyAPI::Context.scope.to_s,
+            scope: scope.to_s,
             redirect_uri: "#{ShopifyAPI::Context.host}#{redirect_path}",
             state: state,
             "grant_options[]": is_online ? "per-user" : "",
