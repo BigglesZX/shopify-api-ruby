@@ -7,6 +7,6 @@
     "value": "123@example.com",
     "description": null,
     "key": "email",
-    "value_type": "string"
+    "type": "string"
   }
 }

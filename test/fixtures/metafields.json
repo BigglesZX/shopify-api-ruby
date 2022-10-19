@@ -8,8 +8,8 @@
       "value": "app_key",
       "description": null,
       "key": "app_key",
-      "value_type": "string"
-     },
+      "type": "string"
+    },
     {
       "created_at": "2011-10-20T14:05:13-04:00",
       "updated_at": "2011-10-20T14:05:13-04:00",
@@ -18,7 +18,7 @@
       "value": "1231231231",
       "description": null,
       "key": "phone",
-      "value_type": "string"
+      "type": "string"
     }
   ]
 }
